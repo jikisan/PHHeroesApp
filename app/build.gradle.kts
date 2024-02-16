@@ -124,7 +124,9 @@ dependencies {
     runtimeOnly("com.google.accompanist:accompanist-swiperefresh:0.32.0")
     runtimeOnly("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
 
-
+    // For PageIndicator
+//    implementation("androidx.compose.material:material-indicators:1.3.0-beta01")
+    runtimeOnly("com.google.android.material:material:1.11.0")
 
 
     // Palette API
