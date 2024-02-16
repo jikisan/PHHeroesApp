@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.jikisan.phheroesapp"
-        minSdk = 24
+        minSdk = 25
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -35,11 +35,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -73,6 +73,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.wear.compose:compose-material:1.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -118,7 +119,14 @@ dependencies {
 //    implementation("com.google.accompanist:accompanist-pager-indicators:0.24.0-beta")
 //    implementation("com.google.accompanist:accompanist-swiperefresh:0.24.0-beta")
 //    implementation("com.google.accompanist:accompanist-microcontroller:0.24.0-beta")
-//
+    runtimeOnly("com.google.accompanist:accompanist-pager:0.30.1")
+    runtimeOnly("com.google.accompanist:accompanist-pager-indicators:0.31.5-beta")
+    runtimeOnly("com.google.accompanist:accompanist-swiperefresh:0.32.0")
+    runtimeOnly("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
+
+
+
+
     // Palette API
     implementation("androidx.palette:palette-ktx:1.0.0")
 //
@@ -133,4 +141,5 @@ dependencies {
 //    testImplementation("junit:junit:4.13.2")
 //    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.9.22")
 //    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+
 }

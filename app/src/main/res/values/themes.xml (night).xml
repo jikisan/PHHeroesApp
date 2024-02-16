@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/values/themes.xml -->
+<resources>
+
+<!--    <style name="AppTheme" parent="Theme.PHHeroesApp">-->
+<!--        &lt;!&ndash; Night mode attributes &ndash;&gt;-->
+<!--        <item name="android:colorPrimary">@color/nightColorPrimary</item>-->
+<!--        <item name="android:colorPrimaryDark">@color/nightColorPrimaryDark</item>-->
+<!--        <item name="android:colorAccent">@color/nightColorAccent</item>-->
+<!--    </style>-->
+
+</resources>

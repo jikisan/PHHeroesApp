@@ -3,6 +3,7 @@ package com.jikisan.phheroesapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -17,6 +18,7 @@ import com.jikisan.phheroesapp.navigation.SetupNavGraph
 import com.jikisan.phheroesapp.ui.theme.PHHeroesAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalFoundationApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
