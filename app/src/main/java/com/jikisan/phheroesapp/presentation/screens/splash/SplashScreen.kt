@@ -21,13 +21,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.animation.core.Animatable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.jikisan.phheroesapp.R
+import com.jikisan.phheroesapp.navigation.Screen
 import com.jikisan.phheroesapp.ui.theme.Purple500
 import com.jikisan.phheroesapp.ui.theme.Purple700
 
 @Composable
-fun SplashScreen(navController: NavHostController){
+fun SplashScreen(
+    navController: NavHostController,
+    splashViewModel: SplashViewModel = hiltViewModel()
+){
+
+    val onBoardingCompleted by splashViewModel.onBoardingCompleted.collectAsState()
 
     val degrees = remember { Animatable(0f) }
 
@@ -39,6 +48,13 @@ fun SplashScreen(navController: NavHostController){
                 delayMillis = 200
             )
         )
+        navController.popBackStack()
+        if(onBoardingCompleted){
+            navController.navigate(Screen.Home.route)
+        }
+        else {
+            navController.navigate(Screen.Welcome.route)
+        }
     }
     
     Splash(degrees = degrees.value)

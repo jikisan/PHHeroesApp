@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id ("kotlin-android")
     id ("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 
 }
 
@@ -108,8 +109,13 @@ dependencies {
     // Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.49")
 //    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
-//    kapt('androidx.hilt:hilt-compiler:1.0.0')
+//    kapt("androidx.hilt:hilt-compiler:1.1.0")
+//    kapt ("com.google.dagger:hilt-android-compiler:1.1.0")
+
+    implementation ("com.google.dagger:hilt-android:2.49")
+    kapt ("com.google.dagger:hilt-compiler:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0-rc01")
+    runtimeOnly("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     // Coil
     implementation("io.coil-kt:coil-compose:1.3.2")

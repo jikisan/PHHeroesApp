@@ -27,12 +27,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.paging.ExperimentalPagingApi
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.HorizontalPageIndicator
 import androidx.wear.compose.material.PageIndicatorState
 import com.jikisan.phheroesapp.R
 import com.jikisan.phheroesapp.domain.model.OnBoardingPage
+import com.jikisan.phheroesapp.navigation.Screen
 import com.jikisan.phheroesapp.ui.theme.EXTRA_LARGE_PADDING
 import com.jikisan.phheroesapp.ui.theme.PAGING_INDICATOR_SPACING
 import com.jikisan.phheroesapp.ui.theme.PAGING_INDICATOR_WIDTH
@@ -43,7 +46,11 @@ import com.jikisan.phheroesapp.util.Constants.ON_BOARDING_PAGE_COUNT
 
 @ExperimentalFoundationApi
 @Composable
-fun WelcomeScreen(navController: NavHostController) {
+fun WelcomeScreen(
+    navController: NavHostController,
+    welcomeViewModel: WelcomeViewModel = hiltViewModel()
+
+) {
     val pages = listOf(
         OnBoardingPage.First,
         OnBoardingPage.Second,
@@ -85,7 +92,9 @@ fun WelcomeScreen(navController: NavHostController) {
             modifier = Modifier.weight(1f),
             pagerState = pagerState
         ) {
-
+            navController.popBackStack()
+            navController.navigate(Screen.Home.route)
+            welcomeViewModel.saveOnBoardingState(completed = true)
         }
         HorizontalPageIndicator(
             modifier = Modifier
