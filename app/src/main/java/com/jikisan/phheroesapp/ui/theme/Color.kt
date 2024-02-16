@@ -3,7 +3,6 @@ package com.jikisan.phheroesapp.ui.theme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.wear.compose.material.MaterialTheme
 
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
@@ -20,6 +19,7 @@ val Teal200 = Color(0xFF03DAC5)
 
 val LightGray = Color(0xFFD8D8D8)
 val DarkGray = Color(0xFF2A2A2A)
+
 
 //val ColorScheme.welcomeScreenBackgroudColor
 //    @Composable
