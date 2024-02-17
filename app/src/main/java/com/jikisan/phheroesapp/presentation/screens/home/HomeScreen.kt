@@ -15,6 +15,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
+import com.jikisan.phheroesapp.presentation.common.ListContent
 import com.jikisan.phheroesapp.presentation.components.RatingWidget
 import com.jikisan.phheroesapp.ui.theme.EXTRA_LARGE_PADDING
 import com.jikisan.phheroesapp.ui.theme.EXTRA_SMALL_PADDING
@@ -34,14 +35,11 @@ fun HomeScreen(
         topBar = {
             HomeTopBar(onSearchClicked = {})
         },
-
-    ) { padding ->
-
-        RatingWidget(
-            modifier = Modifier
-                .padding(padding),
-            rating = 4.5
-        )
-
-    }
+        content = {
+            ListContent(
+                heroes = allHeroes,
+                navController = navController
+            )
+        }
+    )
 }

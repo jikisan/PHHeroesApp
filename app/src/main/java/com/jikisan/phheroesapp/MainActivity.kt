@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
@@ -11,6 +12,7 @@ import com.jikisan.phheroesapp.navigation.SetupNavGraph
 import com.jikisan.phheroesapp.ui.theme.PHHeroesAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalMaterial3Api
 @ExperimentalCoilApi
 @ExperimentalFoundationApi
 @AndroidEntryPoint
