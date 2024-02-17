@@ -2,6 +2,7 @@ package com.jikisan.phheroesapp.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.jikisan.phheroesapp.data.local.PhHeroDatabase
 import com.jikisan.phheroesapp.util.Constants.PH_HERO_DATABASE
 import dagger.Module
@@ -19,9 +20,11 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(
         @ApplicationContext context: Context
-    ) = Room.databaseBuilder(
-        context,
-        PhHeroDatabase::class.java,
-        PH_HERO_DATABASE
-    ).build()
+    ): PhHeroDatabase {
+        return Room.databaseBuilder(
+            context,
+            PhHeroDatabase::class.java,
+            PH_HERO_DATABASE
+        ).build()
+    }
 }

@@ -8,11 +8,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.paging.ExperimentalPagingApi
+import coil.annotation.ExperimentalCoilApi
 import com.jikisan.phheroesapp.presentation.screens.home.HomeScreen
 import com.jikisan.phheroesapp.presentation.screens.splash.SplashScreen
 import com.jikisan.phheroesapp.presentation.screens.welcome.WelcomeScreen
 import com.jikisan.phheroesapp.util.Constants.DETAILS_ARGUMENT_KEY
 
+@ExperimentalCoilApi
 @ExperimentalFoundationApi
 @Composable
 fun SetupNavGraph(navController: NavHostController){
@@ -28,7 +30,7 @@ fun SetupNavGraph(navController: NavHostController){
             WelcomeScreen(navController = navController)
         }
         composable(route = Screen.Home.route){
-            HomeScreen()
+            HomeScreen(navController = navController)
         }
         composable(
             route = Screen.Details.route,

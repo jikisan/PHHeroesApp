@@ -6,6 +6,7 @@ plugins {
     id ("kotlin-android")
     id ("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 
 }
 
@@ -108,19 +109,20 @@ dependencies {
 
     // Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.49")
+    implementation("com.google.dagger:hilt-android:2.49")
+    implementation("androidx.room:room-paging:2.6.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0-rc01")
+    ksp("androidx.room:room-compiler:2.6.1")
+    kapt("com.google.dagger:hilt-compiler:2.44")
+    runtimeOnly("androidx.hilt:hilt-navigation-compose:1.1.0")
 //    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 //    kapt("androidx.hilt:hilt-compiler:1.1.0")
 //    kapt ("com.google.dagger:hilt-android-compiler:1.1.0")
 
-    implementation ("com.google.dagger:hilt-android:2.49")
-    kapt ("com.google.dagger:hilt-compiler:2.44")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0-rc01")
-    runtimeOnly("androidx.hilt:hilt-navigation-compose:1.1.0")
-
     // Coil
     implementation("io.coil-kt:coil-compose:1.3.2")
-//
-//    // Accompanist
+
+    // Accompanist
 //    implementation("com.google.accompanist:accompanist-pager:0.24.0-beta")
 //    implementation("com.google.accompanist:accompanist-pager-indicators:0.24.0-beta")
 //    implementation("com.google.accompanist:accompanist-swiperefresh:0.24.0-beta")

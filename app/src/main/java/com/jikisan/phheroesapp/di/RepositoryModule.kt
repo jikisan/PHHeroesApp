@@ -5,6 +5,7 @@ import com.jikisan.phheroesapp.data.repository.DataStoreOperationsImpl
 import com.jikisan.phheroesapp.data.repository.Repository
 import com.jikisan.phheroesapp.domain.repository.DataStoreOperations
 import com.jikisan.phheroesapp.domain.use_cases.UseCases
+import com.jikisan.phheroesapp.domain.use_cases.get_all_heroes.GetAllHeroesUseCase
 import com.jikisan.phheroesapp.domain.use_cases.read_onboarding.ReadOnBoardingUseCase
 import com.jikisan.phheroesapp.domain.use_cases.save_onboarding.SaveOnBoardingUseCase
 import dagger.Module
@@ -31,7 +32,8 @@ object RepositoryModule {
     fun providesUseCases(repository: Repository): UseCases{
         return UseCases(
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository),
-            readOnBoardingUseCase = ReadOnBoardingUseCase(repository)
+            readOnBoardingUseCase = ReadOnBoardingUseCase(repository),
+            getAllHeroesUseCase = GetAllHeroesUseCase(repository)
         )
     }
 }

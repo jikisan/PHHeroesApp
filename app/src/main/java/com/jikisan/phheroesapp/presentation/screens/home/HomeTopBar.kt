@@ -19,7 +19,7 @@ import com.jikisan.phheroesapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeTopBar(onSearchClick: () -> Unit){
+fun HomeTopBar(onSearchClicked: () -> Unit){
     TopAppBar(
         title = {
             Text(
@@ -30,11 +30,12 @@ fun HomeTopBar(onSearchClick: () -> Unit){
         colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color.Black),
         actions = {
             IconButton(
-                onClick = onSearchClick
+                onClick = onSearchClicked
             ) {
                 Icon(
                    imageVector = Icons.Default.Search,
-                    contentDescription = stringResource(R.string.search_icon)
+                    contentDescription = stringResource(R.string.search_icon),
+                    tint = Color.White
                 )
             }
         }
