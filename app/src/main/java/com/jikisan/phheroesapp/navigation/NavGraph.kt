@@ -1,6 +1,7 @@
 package com.jikisan.phheroesapp.navigation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -14,6 +15,7 @@ import com.jikisan.phheroesapp.presentation.screens.splash.SplashScreen
 import com.jikisan.phheroesapp.presentation.screens.welcome.WelcomeScreen
 import com.jikisan.phheroesapp.util.Constants.DETAILS_ARGUMENT_KEY
 
+@ExperimentalMaterial3Api
 @ExperimentalCoilApi
 @ExperimentalFoundationApi
 @Composable

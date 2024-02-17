@@ -108,13 +108,12 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.49")
-    implementation("com.google.dagger:hilt-android:2.49")
-    implementation("androidx.room:room-paging:2.6.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0-rc01")
-    ksp("androidx.room:room-compiler:2.6.1")
-    kapt("com.google.dagger:hilt-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.49")
+    implementation("androidx.room:room-paging:2.5.0")
     runtimeOnly("androidx.hilt:hilt-navigation-compose:1.1.0")
+    kapt("com.google.dagger:hilt-compiler:2.44")
+    ksp("androidx.room:room-compiler:2.5.0")
 //    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 //    kapt("androidx.hilt:hilt-compiler:1.1.0")
 //    kapt ("com.google.dagger:hilt-android-compiler:1.1.0")

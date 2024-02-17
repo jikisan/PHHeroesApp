@@ -6,10 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import coil.annotation.ExperimentalCoilApi
 import com.jikisan.phheroesapp.navigation.SetupNavGraph
 import com.jikisan.phheroesapp.ui.theme.PHHeroesAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalCoilApi
 @ExperimentalFoundationApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
