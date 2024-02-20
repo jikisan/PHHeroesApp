@@ -1,6 +1,7 @@
 package com.jikisan.phheroesapp.presentation.screens.home
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -22,6 +23,7 @@ import com.jikisan.phheroesapp.ui.theme.EXTRA_SMALL_PADDING
 import com.jikisan.phheroesapp.ui.theme.LARGE_PADDING
 import com.jikisan.phheroesapp.ui.theme.SMALL_PADDING
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @ExperimentalMaterial3Api
 @ExperimentalCoilApi
 @Composable
@@ -40,6 +42,9 @@ fun HomeScreen(
                 heroes = allHeroes,
                 navController = navController
             )
+
+            Log.d("HOME_SCREEN", allHeroes.itemSnapshotList.toString())
         }
     )
 }
+

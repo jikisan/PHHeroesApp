@@ -16,6 +16,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -40,9 +41,9 @@ object NetworkModule {
 
         val contentType = MediaType.get("application/json")
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl("http://sample/")
             .client(okHttpClient)
-            .addConverterFactory(Json.asConverterFactory(contentType))
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
