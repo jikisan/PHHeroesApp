@@ -46,7 +46,8 @@ class HeroRemoteMediator @Inject constructor(
             }
 
             val response = phHeroesApi.getAllHeroes(page = page)
-            if(response.heroes.isNullOrEmpty()){
+
+            if(response.heroes.isNotEmpty()){
                 phHeroDatabase.withTransaction {
                     if(loadType == LoadType.REFRESH){
                         heroDao.deleteAllHeroes()

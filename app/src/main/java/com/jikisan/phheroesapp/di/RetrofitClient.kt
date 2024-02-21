@@ -1,11 +1,8 @@
-package com.jikisan.phheroesapp.data.repository
+package com.jikisan.phheroesapp.di
 
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.jikisan.phheroesapp.data.remote.PhHeroesApi
-import com.jikisan.phheroesapp.domain.model.ApiResponse
 import com.jikisan.phheroesapp.util.Constants.BASE_URL
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

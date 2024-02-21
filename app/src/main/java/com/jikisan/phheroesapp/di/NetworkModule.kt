@@ -41,7 +41,7 @@ object NetworkModule {
 
         val contentType = MediaType.get("application/json")
         return Retrofit.Builder()
-            .baseUrl("http://sample/")
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
