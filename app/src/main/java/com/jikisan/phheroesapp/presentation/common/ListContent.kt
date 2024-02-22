@@ -41,49 +41,66 @@ import com.jikisan.phheroesapp.ui.theme.LARGE_PADDING
 import com.jikisan.phheroesapp.ui.theme.MEDIUM_PADDING
 import com.jikisan.phheroesapp.util.Constants.BASE_URL
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.LoadState
 import androidx.paging.compose.itemKey
 import com.jikisan.phheroesapp.presentation.components.RatingWidget
+import com.jikisan.phheroesapp.presentation.components.ShimmerEffect
 import com.jikisan.phheroesapp.ui.theme.SMALL_PADDING
 
 @ExperimentalCoilApi
 @Composable
 fun ListContent(
-    heroes : LazyPagingItems<Hero>,
-    navController : NavHostController
-){
-    Log.d("LIST_CONTENT:", heroes.loadState.toString())
-    Log.d("LIST_CONTENT:", heroes.itemSnapshotList.toString())
+    heroes: LazyPagingItems<Hero>,
+    navController: NavHostController
+) {
+    val result = handlePagingResult(heroes = heroes)
 
-//    val heroesData = launchData()
+    if (result) {
+        LazyColumn(
+            contentPadding = PaddingValues(all = SMALL_PADDING),
+            verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
+        ) {
+            items(
+                count = heroes.itemCount,
+                key = heroes.itemKey()
 
-    LazyColumn(
-        contentPadding = PaddingValues( all = SMALL_PADDING),
-        verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
-    ){
-
-        items(
-            count = heroes.itemCount,
-            key = heroes.itemKey()
-
-        ) { index ->
-            val hero =  heroes.get(index)
-            hero?.let {
-                HeroItem(hero = it, navController = navController)
+            ) { index ->
+                val hero =  heroes.get(index)
+                hero?.let {
+                    HeroItem(hero = it, navController = navController)
+                }
             }
         }
+    }
+}
 
-//        items(
-//            count = heroesData.value.size,
-//            key = { index -> heroesData.value[index].id }
-//
-//        ) { index ->
-//            val hero = heroesData.value[index]
-//            hero?.let {
-//                HeroItem(hero = it, navController = navController)
+@Composable
+fun handlePagingResult(
+    heroes: LazyPagingItems<Hero>
+): Boolean {
+    heroes.apply {
+        val error = when {
+            loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+            loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+            loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+            else -> null
+        }
+
+        return when {
+            loadState.refresh is LoadState.Loading -> {
+                ShimmerEffect()
+                false
+            }
+            error != null -> {
+//                EmptyScreen(error = error, heroes = heroes)
+                false
+            }
+//            heroes.itemCount < 1 -> {
+//                EmptyScreen()
+//                false
 //            }
-//        }
-
-
+            else -> true
+        }
     }
 }
 
@@ -185,39 +202,3 @@ fun HeroItemPreview() {
         ),
         navController = rememberNavController())
 }
-
-//@Composable
-//fun launchData(): MutableState<List<Hero>> {
-//    val scaffoldState = rememberScrollState()
-//    val scope = rememberCoroutineScope()
-//
-//    val heroesData = remember { mutableStateOf<List<Hero>>(emptyList()) }
-//
-//    LaunchedEffect(true) {
-//        scope.launch(Dispatchers.IO) {
-//            heroesData.value = getHeroesData()
-//        }
-//    }
-//
-//    return heroesData
-//}
-//
-//suspend fun getHeroesData(): List<Hero> {
-//    return withContext(Dispatchers.IO) {
-//        try {
-//            val response = RetrofitClient.apiResponse.getAllHeroes()
-//            val heroes: List<Hero> = response.heroes
-//
-//            // Now 'heroes' contains the list of Hero objects
-//            heroes.forEach { hero ->
-//                println("Hero: ${hero.name}, Rating: ${hero.rating}, Power: ${hero.power}")
-//            }
-//
-//            heroes
-//        } catch (e: Exception) {
-//            // Handle error
-//            e.printStackTrace()
-//            emptyList() // or throw an exception if appropriate
-//        }
-//    }
-//}
