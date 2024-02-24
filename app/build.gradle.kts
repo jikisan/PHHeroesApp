@@ -129,7 +129,7 @@ dependencies {
     runtimeOnly("com.google.accompanist:accompanist-pager:0.30.1")
     runtimeOnly("com.google.accompanist:accompanist-pager-indicators:0.31.5-beta")
     runtimeOnly("com.google.accompanist:accompanist-swiperefresh:0.32.0")
-    runtimeOnly("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
+    implementation("androidx.activity:activity-compose:1.8.0-alpha07")
 
     // For PageIndicator
 //    implementation("androidx.compose.material:material-indicators:1.3.0-beta01")

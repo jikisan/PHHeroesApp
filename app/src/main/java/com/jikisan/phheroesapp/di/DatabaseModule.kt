@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.jikisan.phheroesapp.data.local.PhHeroDatabase
+import com.jikisan.phheroesapp.data.repository.LocalDataSourceImpl
+import com.jikisan.phheroesapp.domain.repository.LocalDataSource
 import com.jikisan.phheroesapp.util.Constants.PH_HERO_DATABASE
 import dagger.Module
 import dagger.Provides
@@ -26,5 +28,15 @@ object DatabaseModule {
             PhHeroDatabase::class.java,
             PH_HERO_DATABASE
         ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalDataSource(
+        database: PhHeroDatabase
+    ): LocalDataSource {
+        return LocalDataSourceImpl(
+            phHeroDatabase = database
+        )
     }
 }

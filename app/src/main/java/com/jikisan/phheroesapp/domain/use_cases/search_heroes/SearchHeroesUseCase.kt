@@ -1,4 +1,4 @@
-package com.jikisan.phheroesapp.domain.search_heroes
+package com.jikisan.phheroesapp.domain.use_cases.search_heroes
 
 import androidx.paging.PagingData
 import com.jikisan.phheroesapp.data.repository.Repository

@@ -1,6 +1,7 @@
 package com.jikisan.phheroesapp.navigation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -10,12 +11,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.paging.ExperimentalPagingApi
 import coil.annotation.ExperimentalCoilApi
+import com.jikisan.phheroesapp.presentation.screens.details.DetailsScreen
 import com.jikisan.phheroesapp.presentation.screens.home.HomeScreen
 import com.jikisan.phheroesapp.presentation.screens.search.SearchScreen
 import com.jikisan.phheroesapp.presentation.screens.splash.SplashScreen
 import com.jikisan.phheroesapp.presentation.screens.welcome.WelcomeScreen
 import com.jikisan.phheroesapp.util.Constants.DETAILS_ARGUMENT_KEY
 
+@ExperimentalMaterialApi
 @ExperimentalMaterial3Api
 @ExperimentalCoilApi
 @ExperimentalFoundationApi
@@ -41,7 +44,7 @@ fun SetupNavGraph(navController: NavHostController){
                 type = NavType.IntType
             })
         ){
-
+            DetailsScreen(navController = navController)
         }
         composable(route = Screen.Search.route){
             SearchScreen(

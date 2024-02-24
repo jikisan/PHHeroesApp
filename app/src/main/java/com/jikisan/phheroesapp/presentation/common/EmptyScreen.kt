@@ -85,8 +85,9 @@ fun EmptyContent(
     heroes: LazyPagingItems<Hero>? = null
 ) {
 
-    var isRefreshing by remember { mutableStateOf(false) }
+    val isRefreshing by remember { mutableStateOf(false) }
     val pullRefreshState = rememberPullRefreshState(isRefreshing, { heroes?.refresh() })
+
     Box(
         Modifier
             .pullRefresh(pullRefreshState)
@@ -119,10 +120,14 @@ fun EmptyContent(
             )
         }
 
-        PullRefreshIndicator(
-            refreshing = isRefreshing,
-            state = pullRefreshState,
-            Modifier.align(Alignment.TopCenter))
+        if(error != null) {
+            PullRefreshIndicator(
+                refreshing = isRefreshing,
+                state = pullRefreshState,
+                Modifier.align(Alignment.TopCenter)
+            )
+        }
+
     }
 }
 

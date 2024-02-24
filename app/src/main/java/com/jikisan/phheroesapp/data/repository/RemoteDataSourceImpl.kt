@@ -11,7 +11,7 @@ import com.jikisan.phheroesapp.data.paging_source.SearchHeroesSource
 import com.jikisan.phheroesapp.data.remote.PhHeroesApi
 import com.jikisan.phheroesapp.domain.model.Hero
 import com.jikisan.phheroesapp.domain.repository.RemoteDataSource
-import com.jikisan.phheroesapp.util.Constants.ITEM_PER_PAGE
+import com.jikisan.phheroesapp.util.Constants.ITEMS_PER_PAGE
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.Query
 
@@ -26,7 +26,7 @@ class RemoteDataSourceImpl(
     override fun getAllHeroes(): Flow<PagingData<Hero>> {
         val pagingSourceFactory = { heroDao.getAllHeroes() }
         return Pager(
-            config = PagingConfig(pageSize = ITEM_PER_PAGE),
+            config = PagingConfig(pageSize = ITEMS_PER_PAGE),
             remoteMediator = HeroRemoteMediator(
                 phHeroesApi = phHeroesApi,
                 phHeroDatabase = phHeroDatabase
@@ -37,7 +37,7 @@ class RemoteDataSourceImpl(
 
     override fun searchHeroes(query: String): Flow<PagingData<Hero>> {
         return Pager(
-            config = PagingConfig( pageSize = ITEM_PER_PAGE),
+            config = PagingConfig( pageSize = ITEMS_PER_PAGE),
             pagingSourceFactory = {
                 SearchHeroesSource(phHeroesApi = phHeroesApi, query = query)
             }
