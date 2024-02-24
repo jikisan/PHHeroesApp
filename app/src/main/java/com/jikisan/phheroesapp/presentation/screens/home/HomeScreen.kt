@@ -39,17 +39,18 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            HomeTopBar(onSearchClicked = {
-                navController.navigate(Screen.Search.route)
-            })
+            HomeTopBar(
+                onSearchClicked = {
+                    navController.navigate(Screen.Search.route)
+                }
+            )
         },
         content = {
             ListContent(
                 heroes = allHeroes,
-                navController = navController
+                navController = navController,
+                paddingValues = it
             )
-
-            Log.d("HOME_SCREEN", allHeroes.itemSnapshotList.toString())
         }
     )
 }

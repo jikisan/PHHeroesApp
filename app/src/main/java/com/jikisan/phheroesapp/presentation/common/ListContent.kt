@@ -54,13 +54,14 @@ import com.jikisan.phheroesapp.ui.theme.SMALL_PADDING
 @Composable
 fun ListContent(
     heroes: LazyPagingItems<Hero>,
-    navController: NavHostController
+    navController: NavHostController,
+    paddingValues: PaddingValues
 ) {
     val result = handlePagingResult(heroes = heroes)
 
     if (result) {
         LazyColumn(
-            contentPadding = PaddingValues(all = SMALL_PADDING),
+            contentPadding = paddingValues,
             verticalArrangement = Arrangement.spacedBy(SMALL_PADDING),
             modifier = Modifier
                 .background(color = if(isSystemInDarkTheme()) Color.Black else Color.White)
