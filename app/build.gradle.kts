@@ -133,6 +133,11 @@ dependencies {
 
     // For PageIndicator
 //    implementation("androidx.compose.material:material-indicators:1.3.0-beta01")
+    runtimeOnly("org.jetbrains.compose.material:material:1.6.0-rc03")
+    runtimeOnly("com.google.android.material:material:1.11.0")
+    implementation("androidx.compose.material:material:1.7.0-alpha03")
+    implementation("androidx.compose.material3:material3:1.1.2")
+
     runtimeOnly("com.google.android.material:material:1.11.0")
 
 

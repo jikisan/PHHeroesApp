@@ -2,7 +2,9 @@ package com.jikisan.phheroesapp.presentation.common
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -58,7 +61,9 @@ fun ListContent(
     if (result) {
         LazyColumn(
             contentPadding = PaddingValues(all = SMALL_PADDING),
-            verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
+            verticalArrangement = Arrangement.spacedBy(SMALL_PADDING),
+            modifier = Modifier
+                .background(color = if(isSystemInDarkTheme()) Color.Black else Color.White)
         ) {
             items(
                 count = heroes.itemCount,
@@ -74,6 +79,7 @@ fun ListContent(
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun handlePagingResult(
     heroes: LazyPagingItems<Hero>
@@ -92,13 +98,13 @@ fun handlePagingResult(
                 false
             }
             error != null -> {
-//                EmptyScreen(error = error, heroes = heroes)
+                EmptyScreen(error = error, heroes = heroes)
                 false
             }
-//            heroes.itemCount < 1 -> {
-//                EmptyScreen()
-//                false
-//            }
+            heroes.itemCount < 1 -> {
+                EmptyScreen()
+                false
+            }
             else -> true
         }
     }

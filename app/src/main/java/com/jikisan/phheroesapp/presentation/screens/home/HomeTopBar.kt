@@ -2,6 +2,7 @@ package com.jikisan.phheroesapp.presentation.screens.home
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -24,10 +25,12 @@ fun HomeTopBar(onSearchClicked: () -> Unit){
         title = {
             Text(
                 text = "Explore",
-                color = Color.White
+                color = if(isSystemInDarkTheme()) Color.White else Color.Black
             )
         },
-        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color.Black),
+        colors = TopAppBarDefaults.smallTopAppBarColors(
+            containerColor = if(isSystemInDarkTheme()) Color.Black else Color.White
+        ),
         actions = {
             IconButton(
                 onClick = onSearchClicked
@@ -35,7 +38,7 @@ fun HomeTopBar(onSearchClicked: () -> Unit){
                 Icon(
                    imageVector = Icons.Default.Search,
                     contentDescription = stringResource(R.string.search_icon),
-                    tint = Color.White
+                    tint = if(isSystemInDarkTheme()) Color.White else Color.Black
                 )
             }
         }
@@ -46,7 +49,11 @@ fun HomeTopBar(onSearchClicked: () -> Unit){
 @Composable
 @Preview
 fun HomeTopBarPreview(){
-    HomeTopBar {
+    HomeTopBar {    }
+}
 
-    }
+@Composable
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
+fun HomeTopBarDarkPreview(){
+    HomeTopBar {    }
 }

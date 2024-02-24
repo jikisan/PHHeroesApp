@@ -4,6 +4,7 @@ import android.content.Context
 import com.jikisan.phheroesapp.data.repository.DataStoreOperationsImpl
 import com.jikisan.phheroesapp.data.repository.Repository
 import com.jikisan.phheroesapp.domain.repository.DataStoreOperations
+import com.jikisan.phheroesapp.domain.search_heroes.SearchHeroesUseCase
 import com.jikisan.phheroesapp.domain.use_cases.UseCases
 import com.jikisan.phheroesapp.domain.use_cases.get_all_heroes.GetAllHeroesUseCase
 import com.jikisan.phheroesapp.domain.use_cases.read_onboarding.ReadOnBoardingUseCase
@@ -33,7 +34,8 @@ object RepositoryModule {
         return UseCases(
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository),
             readOnBoardingUseCase = ReadOnBoardingUseCase(repository),
-            getAllHeroesUseCase = GetAllHeroesUseCase(repository)
+            getAllHeroesUseCase = GetAllHeroesUseCase(repository),
+            searchHeroesUseCase = SearchHeroesUseCase(repository)
         )
     }
 }

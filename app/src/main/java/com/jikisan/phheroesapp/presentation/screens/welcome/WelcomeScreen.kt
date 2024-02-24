@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -79,7 +80,7 @@ fun WelcomeScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color.Black),
+            .background(color = if(isSystemInDarkTheme()) Color.Black else Color.White),
         ){
         HorizontalPager(
             modifier = Modifier.weight(10f),
@@ -158,7 +159,7 @@ fun PagerScreen(onBoardingPage: OnBoardingPage){
                 .fillMaxWidth()
                 .padding(top = SMALL_PADDING),
             text = onBoardingPage.title,
-            color = Color.White,
+            color = if(isSystemInDarkTheme()) Color.White else Color.Black,
             fontSize = MaterialTheme.typography.displayMedium.fontSize,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center
@@ -169,7 +170,7 @@ fun PagerScreen(onBoardingPage: OnBoardingPage){
                 .padding(horizontal = EXTRA_LARGE_PADDING)
                 .padding(top = SMALL_PADDING),
             text = onBoardingPage.description,
-            color = Color.White,
+            color = if(isSystemInDarkTheme()) Color.White else Color.Black,
             fontSize = MaterialTheme.typography.bodyLarge.fontSize,
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Center

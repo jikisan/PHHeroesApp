@@ -2,6 +2,8 @@ package com.jikisan.phheroesapp.presentation.screens.home
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -11,11 +13,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
+import com.jikisan.phheroesapp.navigation.Screen
 import com.jikisan.phheroesapp.presentation.common.ListContent
 import com.jikisan.phheroesapp.presentation.components.RatingWidget
 import com.jikisan.phheroesapp.ui.theme.EXTRA_LARGE_PADDING
@@ -35,7 +39,9 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            HomeTopBar(onSearchClicked = {})
+            HomeTopBar(onSearchClicked = {
+                navController.navigate(Screen.Search.route)
+            })
         },
         content = {
             ListContent(
