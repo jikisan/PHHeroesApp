@@ -61,10 +61,10 @@ fun ListContent(
 
     if (result) {
         LazyColumn(
-            contentPadding = paddingValues,
             verticalArrangement = Arrangement.spacedBy(SMALL_PADDING),
             modifier = Modifier
                 .background(color = if(isSystemInDarkTheme()) Color.Black else Color.White)
+                .padding(paddingValues)
         ) {
             items(
                 count = heroes.itemCount,
@@ -165,23 +165,23 @@ fun HeroItem(
                     text = hero.about,
                     color = Color.White.copy(alpha = ContentAlpha.medium),
                     fontSize = MaterialTheme.typography.bodySmall.fontSize,
-                    maxLines = 3,
+                    maxLines = 5,
                     overflow = TextOverflow.Ellipsis
                 )
-                Row (
-                    modifier = Modifier
-                        .padding(top = SMALL_PADDING),
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    RatingWidget(
-                        modifier = Modifier.padding(end = SMALL_PADDING),
-                        rating = hero.rating)
-                    Text(
-                        text = "${hero.rating}",
-                        textAlign = TextAlign.Center,
-                        color = Color.White.copy(alpha = ContentAlpha.medium),
-                    )
-                }
+//                Row (
+//                    modifier = Modifier
+//                        .padding(top = SMALL_PADDING),
+//                    verticalAlignment = Alignment.CenterVertically
+//                ){
+//                    RatingWidget(
+//                        modifier = Modifier.padding(end = SMALL_PADDING),
+//                        rating = hero.rating)
+//                    Text(
+//                        text = "${hero.rating}",
+//                        textAlign = TextAlign.Center,
+//                        color = Color.White.copy(alpha = ContentAlpha.medium),
+//                    )
+//                }
             }
         }
     }

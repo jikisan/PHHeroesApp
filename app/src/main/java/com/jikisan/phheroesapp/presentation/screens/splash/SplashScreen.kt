@@ -71,7 +71,7 @@ fun Splash(degrees: Float){
         ){
             Image(
                 modifier = Modifier.rotate(degrees = degrees),
-                painter = painterResource(id = R.drawable.logo),
+                painter = painterResource(id = R.drawable.logo2),
                 contentDescription = stringResource(R.string.app_logo)
             )
         }
@@ -84,7 +84,7 @@ fun Splash(degrees: Float){
         ){
             Image(
                 modifier = Modifier.rotate(degrees = degrees),
-                painter = painterResource(id = R.drawable.logo),
+                painter = painterResource(id = R.drawable.logo2),
                 contentDescription = stringResource(R.string.app_logo)
             )
         }

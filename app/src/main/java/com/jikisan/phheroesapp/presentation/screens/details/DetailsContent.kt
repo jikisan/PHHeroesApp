@@ -22,7 +22,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
@@ -126,7 +128,7 @@ fun BottomSheetContent(
                 modifier = Modifier
                     .size(INFO_ICON_SIZE)
                     .weight(2f),
-                painter = painterResource(id = R.drawable.logo),
+                painter = painterResource(id = R.drawable.logo2),
                 contentDescription = stringResource(id = R.string.app_logo),
                 tint = contentColor
             )
@@ -149,7 +151,7 @@ fun BottomSheetContent(
                 icon = painterResource(id = R.drawable.bolt),
                 iconColor = infoBoxIconColor,
                 bigText = "${selectedHero.power}",
-                smallText = stringResource(R.string.power),
+                smallText = stringResource(R.string.influence),
                 textColor = contentColor
             )
             InfoBox(
@@ -183,19 +185,19 @@ fun BottomSheetContent(
             fontSize = MaterialTheme.typography.body1.fontSize,
             maxLines = ABOUT_TEXT_MAX_LINES
         )
-        Row(
+        Column(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
             OrderedList(
                 title = stringResource(R.string.family),
                 items = selectedHero.family,
-                textColor = contentColor
+                textColor = contentColor,
             )
             OrderedList(
-                title = stringResource(R.string.abilities),
+                title = stringResource(R.string.traits),
                 items = selectedHero.abilities,
-                textColor = contentColor
+                textColor = contentColor,
             )
             OrderedList(
                 title = stringResource(R.string.nature_types),
@@ -235,11 +237,13 @@ fun BackgroundContent(
             contentScale = ContentScale.Crop
         )
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(0.dp, LARGE_PADDING*2, 0.dp, 0.dp),
             horizontalArrangement = Arrangement.End
         ) {
             IconButton(
-                modifier = Modifier.padding(all = LARGE_PADDING),
+                modifier = Modifier.padding(all = SMALL_PADDING),
                 onClick = { onCloseClicked() }
             ) {
                 Icon(
@@ -307,4 +311,13 @@ fun BottomSheetContentDarkPreview() {
             natureTypes = listOf("Earth", "Wind")
         )
     )
+}
+
+@Preview
+@Composable
+fun backgroundContent() {
+    BackgroundContent(
+        heroImage = "") {
+
+    }
 }

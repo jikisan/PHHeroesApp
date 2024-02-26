@@ -14,5 +14,7 @@
     <string name="about">About</string>
     <string name="family">Family</string>
     <string name="abilities">Abilities</string>
-    <string name="nature_types">Nature Types</string>
+    <string name="nature_types">Nature</string>
+    <string name="traits">Traits</string>
+    <string name="influence">Influence</string>
 </resources>

@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.jikisan.phheroesapp.ui.theme.SMALL_PADDING
 import com.jikisan.phheroesapp.ui.theme.titleColor
@@ -22,23 +23,38 @@ fun OrderedList(
     items: List<String>,
     textColor: Color
 ) {
-    Column {
+    Column (
+        modifier = Modifier.padding(bottom = SMALL_PADDING),
+    ){
         Text(
             modifier = Modifier.padding(bottom = SMALL_PADDING),
             text = title,
             color = textColor,
             fontSize = MaterialTheme.typography.subtitle1.fontSize,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            overflow = TextOverflow.Ellipsis,
         )
         items.forEachIndexed { index, item ->
             Text(
                 modifier = Modifier.alpha(ContentAlpha.medium),
-                text = "${index + 1}. $item",
+                text = "${index + 1}. ${item}",
                 color = textColor,
-                fontSize = MaterialTheme.typography.body1.fontSize
+                fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                overflow = TextOverflow.Ellipsis
+
             )
         }
     }
+}
+
+fun reduceName(name: String): String {
+    var split = name.split(" ")
+
+    if (split.size < 2 ) {
+        return split[0]
+    }
+
+    return "${split[0]} ${split[1]}"
 }
 
 @Composable

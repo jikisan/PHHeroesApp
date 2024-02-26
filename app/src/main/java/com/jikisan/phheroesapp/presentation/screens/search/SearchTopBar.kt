@@ -3,6 +3,7 @@ package com.jikisan.phheroesapp.presentation.screens.search
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -17,8 +18,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.jikisan.phheroesapp.ui.theme.TOP_APP_BAR_HEIGHT
 import com.jikisan.phheroesapp.R
+import com.jikisan.phheroesapp.ui.theme.LARGE_PADDING
+import com.jikisan.phheroesapp.ui.theme.topAppBarBackgroundColor
+import com.jikisan.phheroesapp.ui.theme.topAppBarContentColor
 
 @Composable
 fun SearchTopBar(
@@ -47,7 +52,7 @@ fun SearchWidget(
             .fillMaxWidth()
             .height(TOP_APP_BAR_HEIGHT),
         elevation = AppBarDefaults.TopAppBarElevation,
-        color = if(isSystemInDarkTheme()) Color.Black else Color.White
+        color = MaterialTheme.colors.topAppBarBackgroundColor
     ) {
         TextField(
             modifier = Modifier
@@ -59,11 +64,11 @@ fun SearchWidget(
                     modifier = Modifier
                         .alpha(alpha = ContentAlpha.medium),
                     text = "Search here...",
-                    color = if(isSystemInDarkTheme()) Color.White else Color.Black
+                    color = Color.White
                 )
             },
             textStyle = TextStyle(
-                color = if(isSystemInDarkTheme()) Color.White else Color.Black
+                color = MaterialTheme.colors.topAppBarContentColor
             ),
             singleLine = true,
             leadingIcon = {
@@ -75,7 +80,7 @@ fun SearchWidget(
                     Icon(
                         imageVector = Icons.Default.Search,
                         contentDescription = stringResource(R.string.search_icon),
-                        tint = if(isSystemInDarkTheme()) Color.White else Color.Black
+                        tint = MaterialTheme.colors.topAppBarContentColor
                     )
                 }
             },
@@ -92,7 +97,7 @@ fun SearchWidget(
                     Icon(
                         imageVector = Icons.Default.Close,
                         contentDescription = stringResource(R.string.close_icon),
-                        tint = if(isSystemInDarkTheme()) Color.White else Color.Black
+                        tint = MaterialTheme.colors.topAppBarContentColor
                     )
                 }
             },
@@ -106,7 +111,7 @@ fun SearchWidget(
             ),
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.Transparent,
-                cursorColor = if(isSystemInDarkTheme()) Color.White else Color.Black
+                cursorColor = MaterialTheme.colors.topAppBarContentColor
             )
         )
     }
